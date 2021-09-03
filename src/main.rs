@@ -2,14 +2,14 @@ use std::collections::HashMap;
 use std::io::Write;
 
 fn main() {
-	let dict: HashMap<char, Vec<&str>> = [
+	let dict = [
 		('가', vec![ "가나다", "가위" ]),
 		('다', vec![ "다다", "다리미" ]),
 		('위', vec![ "위기" ]),
 	]
 		.iter()
 		.cloned()
-		.collect();
+		.collect::<HashMap<char, Vec<&str>>>();
 	let mut input = String::new();
 	let mut starting_char: Option<char> = None;
 	let mut input_words: Vec<String> = vec![];
