@@ -1,18 +1,15 @@
-use std::collections::HashMap;
-use std::io::Write;
-
 struct GameState {
 	input: String,
 	starting_char: Option<char>,
 	used_words: Vec<String>
 }
 
-fn on_turn(dict: &HashMap<char, Vec<&str>>, state: GameState) {
+fn on_turn(dict: &std::collections::HashMap<char, Vec<&str>>, state: GameState) {
 	match state.input.clone() {
 		mut input @ _ => (
 			input.clear(),
 			print!("단어 입력 > "),
-			std::io::stdout().flush().unwrap(),
+			std::io::Write::flush(&mut std::io::stdout()).unwrap(),
 			match std::io::stdin().read_line(&mut input) {
 				Ok(_) => (
 					input = String::from(input.trim()),
@@ -83,7 +80,7 @@ fn main() {
 		]
 			.iter()
 			.cloned()
-			.collect::<HashMap<char, Vec<&str>>>()
+			.collect::<std::collections::HashMap<char, Vec<&str>>>()
 	{
 		dict @ _ =>
 			match String::new() {
