@@ -41,15 +41,15 @@ fn main() {
 			println!("{}? 그런 건 없다.", input);
 			continue;
 		}
+		if input_words.contains(&input) {
+			println!("{}은(는) 이미 사용된 단어입니다.", input);
+			continue;
+		}
 		let last_char = input.chars().last().unwrap();
 		let continuable_words = dict.get(&last_char);
 		if continuable_words.is_none() {
 			println!("와 한방단어");
 			break;
-		}
-		if input_words.contains(&input) {
-			println!("{}은(는) 이미 사용된 단어입니다.", input);
-			continue;
 		}
 		input_words.push(input.clone());
 		starting_char = Some(last_char);
