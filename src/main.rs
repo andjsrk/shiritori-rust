@@ -12,7 +12,7 @@ fn main() {
 		.collect::<HashMap<char, Vec<&str>>>();
 	let mut input = String::new();
 	let mut last_word_last_char: Option<char> = None;
-	let mut input_words: Vec<String> = vec![];
+	let mut used_words: Vec<String> = vec![];
 	loop {
 		input.clear();
 		print!("단어 입력 > ");
@@ -41,7 +41,7 @@ fn main() {
 			println!("{}? 그런 건 없다.", input);
 			continue;
 		}
-		if input_words.contains(&input) {
+		if used_words.contains(&input) {
 			println!("{}은(는) 이미 사용된 단어입니다.", input);
 			continue;
 		}
@@ -51,7 +51,7 @@ fn main() {
 			println!("와 한방단어");
 			break;
 		}
-		input_words.push(input.clone());
+		used_words.push(input.clone());
 		last_word_last_char = Some(last_char);
 	}
 }
