@@ -11,7 +11,7 @@ fn main() {
 		.cloned()
 		.collect::<HashMap<char, Vec<&str>>>();
 	let mut input = String::new();
-	let mut starting_char: Option<char> = None;
+	let mut last_word_last_char: Option<char> = None;
 	let mut input_words: Vec<String> = vec![];
 	loop {
 		input.clear();
@@ -32,8 +32,8 @@ fn main() {
 		}
 		println!("입력한 단어: {}", input);
 		let first_char: char = input.chars().nth(0).unwrap();
-		if starting_char.is_some() && first_char != starting_char.unwrap() {
-			println!("{}는 {}로 시작하지 않습니다.", first_char, starting_char.unwrap());
+		if last_word_last_char.is_some() && first_char != last_word_last_char.unwrap() {
+			println!("{}는 {}로 시작하지 않습니다.", first_char, last_word_last_char.unwrap());
 			continue;
 		}
 		let found_words = dict.get(&first_char);
@@ -52,6 +52,6 @@ fn main() {
 			break;
 		}
 		input_words.push(input.clone());
-		starting_char = Some(last_char);
+		last_word_last_char = Some(last_char);
 	}
 }
