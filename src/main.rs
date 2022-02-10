@@ -33,7 +33,7 @@ fn main() {
 		println!("입력한 단어: {}", input);
 		let first_char: char = input.chars().nth(0).unwrap();
 		if last_word_last_char.is_some() && first_char != last_word_last_char.unwrap() {
-			println!("{}는 {}로 시작하지 않습니다.", first_char, last_word_last_char.unwrap());
+			println!("{}는 {}로 시작하지 않습니다.", input, last_word_last_char.unwrap());
 			continue;
 		}
 		let found_words = dict.get(&first_char);
